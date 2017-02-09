@@ -34,7 +34,7 @@ data:
             volumeMounts:
               - name: source
                 readOnly: true
-                mountPath: /usr/src/app/funktion
+                mountPath: /userfunc
             livenessProbe:
               httpGet:
                 path: "/healthz"
@@ -51,7 +51,7 @@ data:
               name: hello
               items:
               - key: source
-                path: source.js
+                path: user
   service: |
     metadata:
       annotations:
