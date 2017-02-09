@@ -12,7 +12,7 @@ codepath = '/userfunc/user'
 
 userfunc = None
 
-@app.route('/specialize', methods=['POST'])
+# @app.route('/specialize', methods=['POST'])
 def load():
     global userfunc
     userfunc = (imp.load_source('user', codepath)).main
@@ -31,6 +31,10 @@ def f():
     # And the user func can then access that (after doing a "from flask import g").
     #
     return userfunc()
+
+@app.route('/healthz', methods=['GET', 'POST', 'PUT', 'HEAD', 'OPTIONS', 'DELETE'])
+def health():
+    return 'Healthy!'
 
 #
 # Logging setup.  TODO: Loglevel hard-coded for now. We could allow
@@ -52,4 +56,5 @@ def setup_logger(loglevel):
 #
 setup_logger(logging.DEBUG)
 app.logger.info("Starting server")
+load()
 app.run(host='0.0.0.0', port='8888')
