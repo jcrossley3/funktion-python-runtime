@@ -28,7 +28,7 @@ data:
         spec:
           terminationGracePeriodSeconds: 1
           containers:
-          - image: jcrossley3/python-env:latest
+          - image: funktion/python-env
             name: connector
             imagePullPolicy: IfNotPresent
             volumeMounts:
